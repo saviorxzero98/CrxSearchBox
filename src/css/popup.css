@@ -1,0 +1,35 @@
+.SearchButton {
+    background-color: #0071D3; /* Green */
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+	border-radius: 4px;
+}
+.SearchButton:hover {
+	background-color: #5571D3;
+}
+.InputBox {
+    margin: 2px 0 2px 0;
+    padding: 4px 8px;
+    font-weight: unset;
+    font-size: 14px;
+    font-family: 'Arial', '微軟正黑體', '儷黑 Pro', 'Droid Sans', '新細明體';
+    display: inline-block;
+    border: 1px solid #cccccc;
+	border-radius: 4px;
+}
+.SelectBox {
+    margin: 2px 0 2px 0;
+    padding: 4px 12px;
+    font-weight: unset;
+    font-size: 14px;
+    font-family: 'Arial', '微軟正黑體', '儷黑 Pro', 'Droid Sans', '新細明體';
+    display: inline-block;
+    border: 1px solid #cccccc;
+	overflow-y: hidden;
+	border-radius: 4px;
+}
