@@ -1,30 +1,41 @@
 $(function () {
-    initialAutocomplete();
-
+	// 初始化
+	chrome.storage.local.get(["SearchEngine"], function(items){
+		var searchEngine = items["SearchEngine"] || "google";
+		$("#SearchEngine").val(searchEngine);
+		
+		initialAutocomplete();
+	});
+    
+	// 設定自動完成
     $("#SearchInput").autocomplete({
         source: autocompleteSuggestSource
     });
 
+	// 改變搜尋引擎
+    $("#SearchEngine").change(function () {
+		chrome.storage.local.set({ "SearchEngine": $("#SearchEngine").val() }, function(){});
+        initialAutocomplete();
+    })
+
+	// 按下搜尋
+	$("#StartSearch").click(function () {
+		startSearch();
+	});
 	$("#SearchInput").keypress(function(e) {
 		if(e.which == 13) {
 			startSearch();
 		}
 	});
-	
-    $("#SearchEngine").change(function () {
-        initialAutocomplete();
-    })
 
-	$("#StartSearch").click(function () {
-	    startSearch();
-	});
-
+	// 初始化自動完成
 	function initialAutocomplete() {
 	    $("#SearchInput").autocomplete({
 	        source: autocompleteSuggestSource
 	    });
 	}
 
+	// 設定自動完成資料
 	function autocompleteSuggestSource(request, response) {
 	    var searchKeyword = encodeURIComponent($("#SearchInput").val());
 	    var searchEngine = $("#SearchEngine").val();
@@ -41,7 +52,9 @@ $(function () {
 	            case "bing":
 	                url = "https://api.bing.com/osjson.aspx?query=" + searchKeyword + "&amp;language=zh-TW&amp;form=OSDJAS";
 	                break;
-                case "google":
+				case "google":
+				case "baha":
+				case "azo":
 	            default:
 	                url = "https://www.google.com/complete/search?client=firefox&q=" + searchKeyword;
 	        }
@@ -70,7 +83,8 @@ $(function () {
 	    defaultData.push(searchKeyword);
 	    response(defaultData)
 	}
-
+	
+	// 設定開始搜尋
 	function startSearch() {
 	    var searchKeyword = encodeURIComponent($("#SearchInput").val());
 	    var searchEngine = $("#SearchEngine").val();
@@ -91,7 +105,14 @@ $(function () {
 	                url = "https://tw.search.yahoo.com/search?p=" + searchKeyword + "&fr=opensearch"
 	                break;
 	            case "google":
-	                url = "https://www.google.com.tw/search?q=" + searchKeyword + "&oq=" + searchKeyword;
+					url = "https://www.google.com.tw/search?q=" + searchKeyword + "&oq=" + searchKeyword;
+					break;
+				case "baha":
+					url = "https://search.gamer.com.tw/?q=" + searchKeyword
+					break;
+				case "azo":
+					url = "http://www.azofreeware.com/search?q=" + searchKeyword
+					break;
 	        }
             
 	        if (url) {
