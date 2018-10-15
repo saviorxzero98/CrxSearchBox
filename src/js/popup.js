@@ -50,8 +50,14 @@ $(function () {
 	                url = "https://zh.wiktionary.org/w/api.php?action=opensearch&format=json&formatversion=2&search=" + searchKeyword + "&namespace=0&limit=10&suggest=true";
 	                break;
 	            case "bing":
-	                url = "https://api.bing.com/osjson.aspx?query=" + searchKeyword + "&amp;language=zh-TW&amp;form=OSDJAS";
-	                break;
+	                url = "https://api.bing.com/osjson.aspx?query=" + searchKeyword + "&language=zh-TW&form=OSDJAS";
+					break;
+				case "yahoo":
+					url = "https://tw.search.yahoo.com/sugg/os?command=" + searchKeyword + "&output=fxjson&fr=opensearch";
+					break;
+				case "yahoodict":
+					url = "https://tw.search.yahoo.com/sugg/os?command=" + searchKeyword + "&output=fxjson&fr=opensearch&pubid=1306&appid=tw.dictionary.search.yahoo.com";
+					break;
 				case "google":
 				case "baha":
 				case "azo":
@@ -102,8 +108,11 @@ $(function () {
 	                url = "https://www.bing.com/search?q=" + searchKeyword;
 	                break;
 	            case "yahoo":
-	                url = "https://tw.search.yahoo.com/search?p=" + searchKeyword + "&fr=opensearch"
-	                break;
+	                url = "https://tw.search.yahoo.com/search?p=" + searchKeyword + "&fr=opensearch";
+					break;
+				case "yahoodict":
+					url = "https://tw.dictionary.search.yahoo.com/search?p=" + searchKeyword + "&fr=opensearch";
+					break;
 	            case "google":
 					url = "https://www.google.com.tw/search?q=" + searchKeyword + "&oq=" + searchKeyword;
 					break;
