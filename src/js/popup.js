@@ -58,6 +58,9 @@ $(function () {
 				case "yahoodict":
 					url = "https://tw.search.yahoo.com/sugg/os?command=" + searchKeyword + "&output=fxjson&fr=opensearch&pubid=1306&appid=tw.dictionary.search.yahoo.com";
 					break;
+				case "duckduckgo":
+				    url = "https://duckduckgo.com/ac/?q=" + searchKeyword + "&kl=tw-tzh&type=list";
+					break;
 				case "google":
 				case "baha":
 				case "azo":
@@ -72,7 +75,7 @@ $(function () {
 	            success: function (data) {
 	                $('input.suggest-user').removeClass('ui-autocomplete-loading');
 	                if (data && Array.isArray(data) && data.length > 1) {
-	                    response(data[1]);
+	                    response(data[1]);	
 	                }
 	            },
 	            error: function (data) {
@@ -115,6 +118,9 @@ $(function () {
 					break;
 	            case "google":
 					url = "https://www.google.com.tw/search?q=" + searchKeyword + "&oq=" + searchKeyword;
+					break;
+				case "duckduckgo":
+					url = "https://duckduckgo.com/?q=" + searchKeyword + "&ia=web";
 					break;
 				case "baha":
 					url = "https://search.gamer.com.tw/?q=" + searchKeyword
