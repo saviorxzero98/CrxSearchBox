@@ -113,8 +113,22 @@ let SuggestHelperFactory = {
 }
 
 class SearchHelper {
-    constructor(searchEngine) {
+    constructor(searchEngine, options) {
         this.searchEngine = searchEngine;
+
+        if (options) {
+            if (options.openType) {
+                this.options = options;
+            }
+            else {
+                this.options.openType = 'newtab';
+            }
+        }
+        else {
+            this.options = { 
+                openType: 'newtab' 
+            };
+        }
     }
 
     search(search) {
@@ -126,7 +140,21 @@ class SearchHelper {
         url = url.replace('${search}', search);
 
         if (url) {
-            chrome.tabs.create({ url: url });
+            if (this.options) {
+                switch (this.options.openType) {
+                    case 'current':
+                        window.location.href = url;
+                        break;
+
+                    case 'newtab':
+                    default:
+                        chrome.tabs.create({ url: url });
+                        break;
+                }
+            }
+            else {
+                chrome.tabs.create({ url: url });
+            }
         }
     }
 }
