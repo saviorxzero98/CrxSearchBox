@@ -51,7 +51,7 @@ let SearchEngines = {
         id: 'wikiwand',
         title: 'Wikiwand',
         searchUrl: 'https://www.wikiwand.com/zh-tw/${search}',
-        suggestUrl: 'https://zh.wiktionary.org/w/api.php?action=opensearch&format=json&formatversion=2&search=${search}&namespace=0&limit=10&suggest=true',
+        suggestUrl: 'https://zh.wikipedia.org/w/api.php?action=opensearch&format=json&formatversion=2&search=${search}&namespace=0&limit=10&suggest=true',
         isEnable: true
     },
 
@@ -85,5 +85,13 @@ let SearchEngines = {
         searchUrl: 'https://maps.google.com/maps?q=${search}',
         suggestUrl: 'https://www.google.com/complete/search?client=firefox&q=${search}',
         isEnable: true
+    },
+    
+    ecosia: {
+        id: 'ecosia',
+        title: 'Ecosia',
+        searchUrl: 'https://www.ecosia.org/search?q=${search}',
+        suggestUrl: 'https://ac.ecosia.org/autocomplete?q=${search}&type=list',
+        isEnable: false
     }
 }
