@@ -10,9 +10,9 @@
 
 ## Screenshot
 
-![](docs\images\001.png)
+![](docs/images/001.png)
 
-![](docs\images\002.png)
+![](docs/images/002.png)
 
 
 
