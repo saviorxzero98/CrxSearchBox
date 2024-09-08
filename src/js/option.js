@@ -23,6 +23,22 @@ let SearchEngines = {
         isEnable: true
     },
 
+    brave: {
+        id: 'brave',
+        title: 'Brave',
+        searchUrl: 'https://search.brave.com/search?q=${search}&source=web',
+        suggestUrl: 'https://search.brave.com/api/suggest?q=${search}',
+        isEnable: true
+    },
+
+    norton: {
+        id: 'norton',
+        title: 'Norton',
+        searchUrl: 'https://nortonsafe.search.ask.com/web?q=${search}',
+        suggestUrl: 'https://ss-sym.search.ask.com/ss?limit=10&li=ff&hl=zh-TW&q=${search}',
+        isEnable: true
+    },
+
     yahoo: {
         id: 'yahoo',
         title: 'Yahoo奇摩!',
@@ -85,6 +101,14 @@ let SearchEngines = {
         searchUrl: 'https://maps.google.com/maps?q=${search}',
         suggestUrl: 'https://www.google.com/complete/search?client=firefox&q=${search}',
         isEnable: true
+    },
+    
+    startpage: {
+        id: 'startpage',
+        title: 'StartPage',
+        searchUrl: 'https://www.startpage.com/sp/search?query=${search}&cat=web&pl=opensearch&language=english',
+        suggestUrl: 'https://www.startpage.com/suggestions?q=${search}&format=opensearch',
+        isEnable: false
     },
     
     ecosia: {
