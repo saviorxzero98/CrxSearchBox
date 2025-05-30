@@ -12,35 +12,37 @@ class DefaultSuggestHelper {
         let url = this.searchEngine.suggestUrl ?? '';
         url = url.replace('${search}', search);
 
-        $.ajax({
-            dataType: 'json',
-            type: 'Get',
-            url: url,
-            success: (data) => {
-                $('input.suggest-user').removeClass('ui-autocomplete-loading');
-                
-                if (callback && typeof callback === 'function') {
-                    if (data && Array.isArray(data) && data.length > 1) {
-                        callback(data[1]); 
-                        return;   
+        if (url) {
+            $.ajax({
+                dataType: 'json',
+                type: 'Get',
+                url: url,
+                success: (data) => {
+                    $('input.suggest-user').removeClass('ui-autocomplete-loading');
+                    
+                    if (callback && typeof callback === 'function') {
+                        if (data && Array.isArray(data) && data.length > 1) {
+                            callback(data[1]); 
+                            return;   
+                        }
+                        callback([ search ]);
                     }
-                    callback([ search ]);
+                    else {
+                        callback([]);
+                    }
+                },
+                error: (data) => {
+                    $('input.suggest-user').removeClass('ui-autocomplete-loading');
+                    
+                    if (callback && typeof callback === 'function') {
+                        callback([ search ]);
+                    }
+                    else {
+                        callback([]);
+                    }
                 }
-                else {
-                    callback([]);
-                }
-            },
-            error: (data) => {
-                $('input.suggest-user').removeClass('ui-autocomplete-loading');
-                
-                if (callback && typeof callback === 'function') {
-                    callback([ search ]);
-                }
-                else {
-                    callback([]);
-                }
-            }
-        });
+            });
+        }
     }
 }
 
