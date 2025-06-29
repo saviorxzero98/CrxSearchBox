@@ -55,6 +55,13 @@ let SearchEngines = {
         suggestUrl: 'https://duckduckgo.com/ac/?q=${search}&kl=tw-tzh&type=list',
         isEnable: true
     },
+    youcom: {
+        id: 'youcom',
+        title: 'You.com',
+        searchUrl: 'https://you.com/search?fromSearchBar=true&tbm=youchat&q=${search}',
+        suggestUrl: 'https://duckduckgo.com/ac/?q=${search}&kl=tw-tzh&type=list',
+        isEnable: true
+    },
     chatgpt: {
         id: 'chatgpt',
         title: 'ChatGPT',
